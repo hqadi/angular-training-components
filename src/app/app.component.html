@@ -1,0 +1,82 @@
+<!-- <button class="btn btn-primary">click</button>
+<app-test></app-test> -->
+ <!-- {{ title }}
+ {{ 2 + 2 }}
+ {{ title.toUpperCase() }}
+ {{ title.length }}
+ {{ greetUser() }} -->
+ <!-- assignments -->
+ <!-- <div>
+    {{ title }}
+ </div> -->
+<!-- global javascript variables -->
+<!-- <div>
+    {{ url }}
+</div> -->
+<!-- <div>{{ myWindow.location.href }}</div> -->
+<!--  ++ -- -->
+<!-- {{ count + 1 }} -->
+<!-- bitwise operators -->
+<!-- <div>{{ result }}</div> -->
+<!-- new -->
+<!-- <div>
+    {{ arr.length }}
+    <span class="mx-3">{{ arr[0] }}</span> -->
+<!-- </div>
+<div>
+    {{ true && title }}
+</div> -->
+<!-- <div>
+    {{ () => 'hi' }}
+</div> -->
+
+<!-- <div>
+    {{ greetUser() }}
+</div> -->
+
+<!-- <input type="text" value="test">
+
+<table class="w-100">
+    <thead>
+        <th>col 1</th>
+        <th>col 2</th>
+        <th>col 3</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td [colSpan]="cols">wide cell</td>
+            <td>normal cell</td>
+        </tr>
+    </tbody> -->
+
+   
+<!-- </table> -->
+
+<!-- <input type="text" id="hala">
+<button class="btn btn-primary" [disabled]="true">click me</button>
+<div [class]="classes">
+    text here
+</div> -->
+<!-- <div class="border" [style.width]="'100px'" [style.backgroundColor]="backgroundColor">
+    style binding
+</div> -->
+
+<!-- <nav [style]="navStyle">
+    <a [style.text-decoration]="activeLinkStyle">Home Page</a>
+    <a [style.text-decoration]="linkStyle">Login</a>
+</nav>
+
+<input type="text" placeholder="enter you phone number" #phone>
+
+<button class="btn btn-primary" (click)="onButtonClick(phone)">click</button> -->
+
+<!-- <input type="text" id="name" [(ngModel)]="name">
+
+{{ name }} -->
+
+<app-test 
+    title="name" 
+    [object]="{ age: 5 }" 
+    name="Ahmad"
+    (titleUpdated)="onTitleUpdate($event)"
+></app-test>
