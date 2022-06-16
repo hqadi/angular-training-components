@@ -1,0 +1,7 @@
+<div class="border border-danger">
+    <h3>one</h3>
+    <h4>receivedData: <span class="text-success">{{ receivedData }}</span></h4>
+    <app-two [inputData]="receivedData"></app-two>
+    <app-six></app-six>
+    <app-three (sendData)="dataReceived($event)"></app-three>
+</div>
