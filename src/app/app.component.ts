@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Client } from 'src/models';
 
 @Component({
     selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent {
     btnDisabled = false;
     isBlue = true;
     classes = 'border border-danger m-5 text-secondary';
-    isSuccess = false;
+    isSuccess = true;
     isBold = false;
     classObj = {
         'text-success': this.isSuccess,
@@ -34,6 +35,17 @@ export class AppComponent {
     name = 'hala';
     showTestComponent = true;
     currentDate = new Date();
+    showDiv = true;
+    customer: any;
+    items: string[] = ['name 1', 'name 2', 'name 3', 'name 4', 'name 5'];
+    color = '';
+    client: Client = {
+        id: 1,
+        initials: 'ABC',
+        description: 'whatever',
+        sector: 'Government',
+        status: 2,
+    };
 
     greetUser(): string {
         console.log('inside greetUser');

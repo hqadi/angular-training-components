@@ -137,4 +137,100 @@
     {{ { age: 0 } | object:'age' }}
 </div> -->
 <!-- Pipes -->
-<app-one></app-one>
+<!-- <app-one *ngIf="showDiv"></app-one> -->
+
+<!-- <div [ngClass]="classes">
+    text here
+</div>
+
+<nav [ngStyle]="{ fontSize: '1.2rem', color: 'green' }">
+    <a [style.text-decoration]="activeLinkStyle">Home Page</a>
+    <a [style.text-decoration]="linkStyle">Login</a>
+</nav>
+
+<input type="text" id="name" [(ngModel)]="name">
+{{ name }} -->
+
+
+<!-- <ng-template>
+    text text
+</ng-template>
+
+<div *ngIf="showDiv">
+    ngIf example
+</div>
+
+<div class="d-none">
+    hide using css
+</div> -->
+
+<!-- <div *ngIf="customer?.name; else elseBlock"> customer && customer.name => customer?.name -->
+    <!-- <div *ngIf="customer.name">Hello! {{ customer.name.length }}</div> -->
+    <!-- Hello! {{ customer.name.length }} -->
+    <!-- other data: {{ customer | json }} -->
+<!-- </div> -->
+<!-- <ng-template #elseBlock>
+    <div class="text-danger">
+        customer.name is undefined
+    </div>
+</ng-template>
+
+
+
+<div *ngIf="customer?.name;then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+    Hello! {{ customer.name.length }}
+</ng-template>
+<ng-template #elseBlock>
+    <div class="text-danger">
+        customer.name is undefined
+    </div>
+</ng-template> -->
+<!-- 
+<div *ngFor="let item of items; let i = index; first as f; last as last; even as even; odd as odd" [class.border-bottom]="!last">
+    {{ item }} {{ i }} {{ f }} {{ last }} {{ even }} {{ odd }}
+</div>
+<p>
+    I turned the corner
+    <ng-container *ngIf="customer">
+        and saw {{ customer.name }}. I waved
+    </ng-container>
+    and continued my way
+</p>
+<button class="btn btn-primary my-3" (click)="customer = { description: 'some name', name: 'name' }">Define customer</button>
+
+<ng-container *ngFor="let item of items">
+    {{ item }}
+</ng-container>
+
+<ng-container [ngSwitch]="name">
+    <div class="text-success" *ngSwitchCase="'test'">
+        test
+    </div>
+    <app-one *ngSwitchCase="'hala'"></app-one>
+    <app-test *ngSwitchDefault></app-test>
+</ng-container> -->
+
+<!-- <div appHighlight="blue">
+    some text
+</div>
+
+<p [appHighlight]="color" defaultColor="red">
+    some text
+</p>
+
+<div>Choose the color</div>
+<input type="radio" name="radio" (click)="color = 'yellow'">Yellow
+<input type="radio" name="radio" (click)="color = 'green'">Green
+<input type="radio" name="radio" (click)="color = 'blue'">Blue
+<div appHighlight>
+    {{ color }}
+</div> -->
+
+<div *appUnless="isBold">
+    show when condition is false
+</div>
+
+<app-one *appUnless="true"></app-one>
+
+{{ client | json }}

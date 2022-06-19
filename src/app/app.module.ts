@@ -13,6 +13,9 @@ import { FiveComponent } from './five/five.component';
 import { SixComponent } from './six/six.component';
 import { SevenComponent } from './seven/seven.component';
 import { EightComponent } from './eight/eight.component';
+import { StringPipe } from './string.pipe';
+import { HighlightDirective } from './highlight.directive';
+import { UnlessDirective } from './unless.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { EightComponent } from './eight/eight.component';
     FiveComponent,
     SixComponent,
     SevenComponent,
-    EightComponent
+    EightComponent,
+    StringPipe,
+    HighlightDirective,
+    UnlessDirective
   ],
   imports: [
     BrowserModule,
