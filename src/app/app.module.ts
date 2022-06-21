@@ -16,6 +16,7 @@ import { EightComponent } from './eight/eight.component';
 import { StringPipe } from './string.pipe';
 import { HighlightDirective } from './highlight.directive';
 import { UnlessDirective } from './unless.directive';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { UnlessDirective } from './unless.directive';
   imports: [
     BrowserModule,
     FormsModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
