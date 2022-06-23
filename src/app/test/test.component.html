@@ -7,7 +7,33 @@
     {{ masterName }}
 </p>
 <button class="btn btn-secondary" (click)="updateTitle()">Update Name</button> -->
-
+<!-- <ng-content></ng-content>
 <div class="m-3">{{ data | json }}</div>
+<ng-content select=".center"></ng-content>
 <input type="text" id="name" #input>
-
+<ng-content select=".question"></ng-content>
+<div class="text-success">
+    ng-content without the select attribute
+</div> -->
+<button class="btn btn-primary d-block" (click)="addAccount()">Add Account</button>
+<table class="w-100">
+    <thead>
+        <th>ID</th>
+        <th>Client Name</th>
+        <th>Description</th>
+        <th>Legal Entity</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let account of accounts">
+            <td>{{ account.id }}</td>
+            <td>{{ account.clientName }}</td>
+            <td>{{ account.description }}</td>
+            <td>{{ account.legalEntity }}</td>
+            <td>
+                <button class="btn btn-secondary me-2" (click)="editAccount(account)">Edit</button>
+                <button class="btn btn-danger" (click)="deleteAccount(account.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

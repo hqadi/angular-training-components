@@ -227,7 +227,7 @@
     {{ color }}
 </div> -->
 
-<div *appUnless="isBold">
+<!-- <div *appUnless="isBold">
     show when condition is false
 </div>
 
@@ -235,4 +235,14 @@
 
 {{ client | json }}
 
-<app-header></app-header>
+<app-header></app-header> -->
+
+<app-test>
+    <div class="text-danger question">
+        projected content
+    </div>
+    <app-one class="center"></app-one>
+    <div class="p-5 m-5 fw-bold" style="color: blue; font-size: 24px">
+        content that does not match any selector
+    </div>
+</app-test>

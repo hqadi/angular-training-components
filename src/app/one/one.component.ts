@@ -11,6 +11,7 @@ export class OneComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
+        console.log('inside ngOnInit() in app-one');
     }
 
     dataReceived(data: string): void {
