@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Observable, Observer, of } from 'rxjs';
 import { Account, EditAccountBody } from '../models/account.model';
 import { AccountService } from '../services/account.service';
 
@@ -25,6 +26,28 @@ export class TestComponent implements OnInit, OnChanges, OnDestroy, AfterViewIni
         console.log('input: ', this.input);
         console.log('inside ngOnInit()');
         this.getAccounts();
+
+        // const observable = of(1, 2, 3);
+        const observable = new Observable((observer: Observer<number>) => {
+            observer.next(1);
+            observer.next(2);
+            // observer.error('error!');
+            observer.next(3);
+            observer.complete();
+            return { unsubscribe() {} };
+        });
+        console.log('-----------------------------------------');
+        // observable.subscribe({
+        //     next: (x: number) => console.log('next:', x),
+        //     error: (err) => console.log('error:', err),
+        //     complete: () => console.log('observable completed'),
+        // });
+        observable.subscribe(
+            (x: number) => console.log('next:', x), // next
+            err => console.log('error:', err), // error
+            () => console.log('observable completed'), // complete
+        );
+        console.log('-----------------------------------------');
     }
 
     ngOnChanges(changes: SimpleChanges): void {

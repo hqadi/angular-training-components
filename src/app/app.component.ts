@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/models';
+import { UsersService } from './services/users.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'test';
     url = window.location.href;
     myWindow = window;
@@ -46,6 +47,28 @@ export class AppComponent {
         sector: 'Government',
         status: 2,
     };
+
+    constructor(private usersService: UsersService) {}
+
+    ngOnInit(): void {
+        this.getUsers();
+    }
+
+    getUsers() {
+        this.usersService.getUsers().subscribe(response => {
+            console.log(response);
+            // const keys = response.headers.keys();
+            // keys.forEach(key => console.log(`${key}: ${response.headers.get(key)}`));
+        });
+    }
+
+    createUser(): void {
+        this.usersService.createUser({ firstName: 'test', lastName: 'test', email: 'test222@test.com'})
+        .subscribe(
+            response => console.log(response),
+            (err) => console.log('Error Occurred (subscribe):', err),
+        );
+    }
 
     greetUser(): string {
         console.log('inside greetUser');

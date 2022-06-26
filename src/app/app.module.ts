@@ -17,6 +17,8 @@ import { StringPipe } from './string.pipe';
 import { HighlightDirective } from './highlight.directive';
 import { UnlessDirective } from './unless.directive';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,8 +41,15 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     FormsModule,
     SharedModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+			provide: HTTP_INTERCEPTORS,
+			useClass: ErrorInterceptor,
+			multi: true,
+		},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
