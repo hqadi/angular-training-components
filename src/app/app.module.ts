@@ -19,6 +19,7 @@ import { UnlessDirective } from './unless.directive';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { HeroFormComponent } from './hero-form/hero-form.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     EightComponent,
     StringPipe,
     HighlightDirective,
-    UnlessDirective
+    UnlessDirective,
+    HeroFormComponent
   ],
   imports: [
     BrowserModule,
