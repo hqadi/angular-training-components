@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { HeroFormComponent } from './hero-form/hero-form.component';
+import { ProfileFormComponent } from './profile-form/profile-form.component';
 
 @NgModule({
   declarations: [
@@ -37,13 +38,15 @@ import { HeroFormComponent } from './hero-form/hero-form.component';
     StringPipe,
     HighlightDirective,
     UnlessDirective,
-    HeroFormComponent
+    HeroFormComponent,
+    ProfileFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     SharedModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {

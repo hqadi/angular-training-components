@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Client } from 'src/models';
 import { UsersService } from './services/users.service';
 
@@ -47,11 +48,15 @@ export class AppComponent implements OnInit {
         sector: 'Government',
         status: 2,
     };
+    nameControl = new FormControl('test');
 
     constructor(private usersService: UsersService) {}
 
     ngOnInit(): void {
         this.getUsers();
+        this.nameControl.valueChanges.subscribe(value => {
+            console.log('Inside valueChanges subscription:', value);
+        });
     }
 
     getUsers() {
@@ -89,5 +94,9 @@ export class AppComponent implements OnInit {
 
     toggleTestComponentView() {
         this.showTestComponent = !this.showTestComponent;
+    }
+
+    updateNameControl(): void{
+        this.nameControl.setValue('updated value');
     }
 }

@@ -1,0 +1,142 @@
+<div class="border p-3 my-3">
+    <form [formGroup]="profileForm" class="d-flex flex-column" (ngSubmit)="onSubmit()">
+        <label class="my-2">
+            First Name:
+            <input type="text" class="form-control mt-2" formControlName="firstName">
+            <span 
+                class="text-danger my-1" 
+                *ngIf="profileForm.controls.firstName?.invalid && profileForm.controls.firstName?.touched"
+            >
+                Name is required
+            </span>
+        </label>
+        <label class="my-2">
+            Last Name:
+            <input type="text" class="form-control mt-2" formControlName="lastName">
+        </label>
+        <div formGroupName="address" class="d-flex flex-column">
+            Address:
+            <label class="my-2">
+                Street:
+                <input type="text" class="form-control mt-2" formControlName="street">
+            </label>
+            <label class="my-2">
+                City:
+                <input type="text" class="form-control mt-2" formControlName="city">
+            </label>
+            <label class="my-2">
+                State:
+                <input type="text" class="form-control mt-2" formControlName="state">
+            </label>
+            <label class="my-2">
+                Zip:
+                <input type="text" class="form-control mt-2" formControlName="zip">
+            </label>
+        </div>
+        <label class="my-2" *ngIf="profileForm.controls.email">
+            Email:
+            <input type="text" class="form-control mt-2" formControlName="email">
+        </label>
+        <div formArrayName="aliases">
+            Aliases:
+            <div *ngFor="let alias of aliases.controls; index as i" class="my-2">
+                <label>
+                    Alias {{ i }}:
+                    <input type="text" class="form-control mt-2" [formControlName]="i">
+                </label>
+                <button class="btn btn-outline-danger ms-2" (click)="removeAlias(i)">Delete</button>
+            </div>
+        </div>
+        <button 
+            class="btn btn-outline-primary my-2" 
+            type="submit"
+        >
+            Submit
+        </button>
+    </form>
+    <div>
+        Value: {{ profileForm.value | json }}
+    </div>
+    <div>
+        Status: {{ profileForm.status }}
+    </div>
+    <div>
+        Valid: {{ profileForm.valid }}
+    </div>
+    <div>
+        Invalid: {{ profileForm.invalid }}
+    </div>
+    <div>
+        Touched: {{ profileForm.touched }}
+    </div>
+    <div>
+        Untouched: {{ profileForm.untouched }}
+    </div>
+    <div>
+        Pristine: {{ profileForm.pristine }}
+    </div>
+    <div>
+        Dirty: {{ profileForm.dirty }}
+    </div>
+    
+    <button 
+        class="btn btn-primary my-2 me-3" 
+        type="button"
+        (click)="fillForm()"
+    >
+        Fill Form
+    </button>
+    <button 
+        class="btn btn-primary my-2" 
+        type="button"
+        (click)="fillFormWithPatchValue()"
+    >
+        Fill Form With patchValue()
+    </button>
+    <div class="d-flex justify-content-between align-items-center">
+        <button 
+            class="btn btn-outline-primary my-2 me-3" 
+            type="button"
+            (click)="resetForm()"
+        >
+            reset
+        </button>
+        <button 
+            class="btn btn-outline-secondary my-2 me-3" 
+            type="button"
+            (click)="disableFirstName()"
+        >
+            Disable First Name
+        </button>
+        <button 
+            class="btn btn-outline-success my-2" 
+            type="button"
+            (click)="enableFirstName()"
+        >
+            Enable First Name
+        </button>
+    </div>
+    <div class="d-flex">
+        <button 
+            class="btn btn-secondary my-2 me-3" 
+            type="button"
+            (click)="addEmailControl()"
+        >
+            Add Email Input
+        </button>
+        <button 
+            class="btn btn-outline-secondary my-2 me-3" 
+            type="button"
+            (click)="removeEmailControl()"
+        >
+            Remove Email Input
+        </button>
+        <button 
+            class="btn btn-outline-danger my-2" 
+            type="button"
+            (click)="addAlias()"
+        >
+            Add Alias
+        </button>
+    </div>
+</div>
