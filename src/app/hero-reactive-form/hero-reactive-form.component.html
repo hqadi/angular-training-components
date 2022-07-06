@@ -1,5 +1,5 @@
 <div class="p-3">
-    <form (ngSubmit)="onSubmit()" #heroForm="ngForm" appIdentityRevealed>
+    <form (ngSubmit)="onSubmit()" [formGroup]="heroForm">
         <div class="form-group mb-3">
             <label for="name">Name</label>
             <input 
@@ -7,22 +7,27 @@
                 id="name" 
                 name="name" 
                 class="form-control" 
+                formControlName="name"
                 required
-                minlength="4"
-                appForbiddenValidator="Steve"
-                [(ngModel)]="model.name"
-                #nameInput="ngModel"
             >
-            <div class="alert alert-danger my-2" *ngIf="!nameInput.valid && nameInput.touched">
-                <div *ngIf="nameInput.errors?.required">
+            <div 
+                class="alert alert-danger my-2" 
+                *ngIf="!name?.valid && name?.touched">
+                <div *ngIf="name.errors?.required">
                     Name is required.
                 </div>
-                <div *ngIf="nameInput.errors?.minlength">
+                <div *ngIf="name.errors?.minlength">
                     Name must be at least 4 characters long
                 </div>
-                <div *ngIf="nameInput.errors?.forbiddenName">
-                    Forbidden Name
+                <div *ngIf="name.errors?.forbiddenName">
+                   Forbidden name
                 </div>
+            </div>
+            <div>
+                Name errors: {{ name.errors ? (name.errors | json) : name.errors }}
+            </div>
+            <div>
+                Name valid: {{ name.valid }}
             </div>
         </div>
         <div class="form-group mb-3">
@@ -32,7 +37,7 @@
                 id="alterEgo" 
                 name="alterEgo" 
                 class="form-control"
-                [(ngModel)]="model.alterEgo"
+                formControlName="alterEgo"
             >
         </div>
         <div class="form-group mb-3">
@@ -41,13 +46,11 @@
                 name="power" 
                 id="power" 
                 class="form-control" 
-                required
-                [(ngModel)]="model.power"
-                #powerInput="ngModel"
+                formControlName="power"
             >
                 <option *ngFor="let power of powers" [value]="power">{{ power }}</option>
             </select>
-            <div class="alert alert-danger my-2" *ngIf="!powerInput.valid && powerInput.touched && powerInput.errors?.required">
+            <div class="alert alert-danger my-2" *ngIf="!power?.valid && power?.touched && power.errors?.required">
                 Power is required
             </div>
         </div>
@@ -79,7 +82,7 @@
         Pristine: {{ heroForm.pristine }}
     </div>
     <div>
-        Form Value: {{ model | json }}
+        Form Value: {{ heroForm.value | json }}
     </div>
     {{ heroForm.status }}
 </div>

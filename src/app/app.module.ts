@@ -21,6 +21,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { HeroFormComponent } from './hero-form/hero-form.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
+import { HeroReactiveFormComponent } from './hero-reactive-form/hero-reactive-form.component';
+import { ForbiddenValidatorDirective } from './directives/forbidden-validator.directive';
+import { IdentityRevealedDirective } from './directives/identity-revealed.directive';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { ProfileFormComponent } from './profile-form/profile-form.component';
     HighlightDirective,
     UnlessDirective,
     HeroFormComponent,
-    ProfileFormComponent
+    ProfileFormComponent,
+    HeroReactiveFormComponent,
+    ForbiddenValidatorDirective,
+    IdentityRevealedDirective
   ],
   imports: [
     BrowserModule,
