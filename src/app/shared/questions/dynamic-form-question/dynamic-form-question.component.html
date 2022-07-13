@@ -1,0 +1,21 @@
+<div [formGroup]="form">
+    <label [attr.for]="question.key">{{ question.label }}</label>
+    <div [ngSwitch]="question.controlType">
+        <input 
+            *ngSwitchCase="'text-box'" 
+            [id]="question.key" 
+            [type]="question.type" 
+            [formControlName]="question.key" 
+        >
+        <select *ngSwitchCase="'dropdown'" [id]="question.key" [formControlName]="question.key">
+            <option *ngFor="let option of question.options" [value]="option.key">
+                {{ option.value }}
+            </option>
+        </select>
+    </div>
+    <div class="text-danger my-1" *ngIf="control?.invalid && control?.touched">
+        <div *ngIf="control?.errors?.required">
+            Required
+        </div>
+    </div>
+</div>

@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Client } from 'src/models';
 import { UsersService } from './services/users.service';
+import { DropdownQuestion } from './shared/questions/dropdown';
+import { QuestionBase } from './shared/questions/question-base';
+import { QuestionControlService } from './shared/questions/question-control.service';
+import { QuestionService } from './shared/questions/question.service';
+import { TextBoxQuestion } from './shared/questions/text-box';
 
 @Component({
     selector: 'app-root',
@@ -49,14 +54,20 @@ export class AppComponent implements OnInit {
         status: 2,
     };
     nameControl = new FormControl('test');
+    questions: QuestionBase<any>[] = [];
 
-    constructor(private usersService: UsersService) {}
+    constructor(
+        private usersService: UsersService, 
+        private qcs: QuestionControlService,
+        private questionService: QuestionService,
+    ) {}
 
     ngOnInit(): void {
         this.getUsers();
         this.nameControl.valueChanges.subscribe(value => {
             console.log('Inside valueChanges subscription:', value);
         });
+        this.questions = this.questionService.getQuestions();
     }
 
     getUsers() {

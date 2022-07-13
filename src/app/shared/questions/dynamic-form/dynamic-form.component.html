@@ -1,0 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <app-dynamic-form-question 
+        *ngFor="let question of questions"
+        [question]="question"
+        [form]="form"
+    ></app-dynamic-form-question>
+    <button class="btn btn-primary my-3" type="submit" [disabled]="form.invalid">Submit</button>
+</form>
+<div *ngIf="payload">
+    {{ payload }}
+</div>

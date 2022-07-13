@@ -52,7 +52,6 @@ import { IdentityRevealedDirective } from './directives/identity-revealed.direct
     FormsModule,
     SharedModule,
     HttpClientModule,
-    ReactiveFormsModule,
   ],
   providers: [
     {
