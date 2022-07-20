@@ -16,4 +16,9 @@ export class QuestionControlService {
         });
         return new FormGroup(group);
     }
+
+    generateFormControl(question: QuestionBase<any>): FormControl {
+        // You need to add validation
+        return new FormControl(question.value);
+    }
 }

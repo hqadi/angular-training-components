@@ -47,6 +47,16 @@
                 <button class="btn btn-outline-danger ms-2" (click)="removeAlias(i)">Delete</button>
             </div>
         </div>
+        <div formArrayName="tags">
+            Tags:
+            <div *ngFor="let tagControl of tags.controls; index as i" class="my-2">
+                <label>
+                    Tag {{ i }}:
+                    <input type="text" class="form-control mt-2" [formControlName]="i">
+                </label>
+                <button class="btn btn-outline-danger ms-2" (click)="removeTag(i)">Delete</button>
+            </div>
+        </div>
         <button 
             class="btn btn-outline-primary my-2" 
             type="submit"
@@ -132,11 +142,18 @@
             Remove Email Input
         </button>
         <button 
-            class="btn btn-outline-danger my-2" 
+            class="btn btn-outline-danger my-2 me-3" 
             type="button"
             (click)="addAlias()"
         >
             Add Alias
+        </button>
+        <button 
+            class="btn btn-outline-danger my-2" 
+            type="button"
+            (click)="addTag()"
+        >
+            Add Tag
         </button>
     </div>
 </div>

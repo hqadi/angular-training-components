@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { QuestionControlService } from '../shared/questions/question-control.service';
+import { TextBoxQuestion } from '../shared/questions/text-box';
 
 @Component({
     selector: 'app-profile-form',
@@ -30,9 +32,15 @@ export class ProfileFormComponent implements OnInit {
         aliases: this.fb.array([this.fb.control('')]),
     });
 
-    constructor(private fb: FormBuilder) { }
+    tag = new TextBoxQuestion({
+        key: 'tag',
+        label: 'Tag',
+    });
+
+    constructor(private fb: FormBuilder, private qcs: QuestionControlService) { }
 
     ngOnInit(): void {
+        this.profileForm.addControl('tags', this.fb.array([]));
     }
 
     onSubmit(): void {
@@ -99,11 +107,23 @@ export class ProfileFormComponent implements OnInit {
         return this.profileForm.get('aliases') as FormArray;
     }
 
+    get tags() {
+        return this.profileForm.get('tags') as FormArray;
+    }
+
     addAlias(): void {
         this.aliases.push(this.fb.control(''));
     }
 
     removeAlias(index: number): void {
         this.aliases.removeAt(index);
+    }
+
+    addTag(): void {
+        this.tags.push(this.qcs.generateFormControl(this.tag));
+    }
+
+    removeTag(index: number): void {
+        this.tags.removeAt(index);
     }
 }
