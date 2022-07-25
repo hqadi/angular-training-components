@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TextBoxQuestion } from '../text-box';
 
 import { DynamicFormQuestionComponent } from './dynamic-form-question.component';
 
@@ -8,14 +10,17 @@ describe('DynamicFormQuestionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DynamicFormQuestionComponent ]
+      declarations: [DynamicFormQuestionComponent],
+      imports: [ReactiveFormsModule],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DynamicFormQuestionComponent);
     component = fixture.componentInstance;
+    component.question = new TextBoxQuestion({ key: 'test' });
+    component.form = new FormGroup({ test: new FormControl() });
     fixture.detectChanges();
   });
 

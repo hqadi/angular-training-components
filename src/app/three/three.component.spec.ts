@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { EightComponent } from '../eight/eight.component';
+import { SevenComponent } from '../seven/seven.component';
 
 import { ThreeComponent } from './three.component';
 
@@ -8,9 +10,13 @@ describe('ThreeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ThreeComponent ]
+      declarations: [
+        ThreeComponent,
+        SevenComponent,
+        EightComponent,
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FiveComponent } from '../five/five.component';
+import { FourComponent } from '../four/four.component';
 
 import { TwoComponent } from './two.component';
 
@@ -8,9 +10,13 @@ describe('TwoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TwoComponent ]
+      declarations: [
+        TwoComponent,
+        FourComponent,
+        FiveComponent,
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

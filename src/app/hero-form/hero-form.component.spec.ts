@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { HeroFormComponent } from './hero-form.component';
 
@@ -8,7 +9,8 @@ describe('HeroFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeroFormComponent ]
+      declarations: [ HeroFormComponent ],
+      imports: [FormsModule],
     })
     .compileComponents();
   });
